@@ -7,9 +7,6 @@ This dataset was prepared by  Pierre-Luc Carrier and Aaron Courville for the Kag
 https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
 ```
 
-
-
-
 ## About Dataset
 
 The dataset comprises 48x48 pixel grayscale images depicting faces. The faces have been automatically aligned, ensuring centrality and uniform spatial occupancy in each image. The objective is to classify each face into one of seven emotion categories based on the displayed facial expression. These emotions/categories are:
@@ -28,12 +25,26 @@ The dataset comprises 48x48 pixel grayscale images depicting faces. The faces ha
 
 ## Files
 
-**Relevant files:**
-* **train.csv:** training data -- contains two columns: "emotion" and "pixels." The "emotion" column contains a numeric code (0 to 6) representing the emotion in the image, while the "pixels" column contains a string enclosed in quotes for each image. This string comprises space-separated pixel values arranged in row-major order; contains 28,709 examples.
-* **test.csv:** test data -- includes only the "pixels" column, and the objective is to predict the corresponding emotion.
-* **icml_face_data.csv/fer2013.csv** -- contains all data (training + test) in three columns: "emotion", "pixels" and "Usage" (whether to be used for "Training", "PublicTest" and "PrivateTest")
+**Important File: icml_face_data.csv** 
+
+This file contains all the data around the competition. It three features: **"emotion", "pixel" and "Usage"**. The "emotion" column contains a numeric code (0 to 6) representing the emotion in the image, while the "pixels" column contains a string enclosed in quotes for each image. This string comprises space-separated pixel values arranged in row-major order. The "Usage" specifies whether that image was provided as part of the training examples, the public test set or the private test set [generally in Kaggle, there is a public and a private leaderboard]. The number of examples for each set are:
+  * 28,709 Training examples
+  * 3,589 PublicTest examples [for evaluation of the public leaderboard on Kaggle]
+  * 3,589 PrivateTest examples [for evaluation of the private leaderboard on Kaggle]
+
+
+📊📊 *We use the PublicTest and PrivateTest sets as our Validation and Test sets respectively* 📊📊
+
+
+**Other files (not relevant for our analysis):**
+
+There are some other files in the dataset, which were relevant for the original structure of the competition. However, we will not need them, since all the data is contained in the file **icml_face_data.csv** above. We still give an introduction to them (most of these files are subsets of **icml_face_data.csv**):
+* **train.csv:** the original training data -- contains two columns: "emotion" and "pixels."
+* **test.csv:** the original public test set -- includes only the "pixels" column, and the objective is to predict the corresponding emotion.
+* **fer2013.csv:** contains all data (training + test) in three columns: "emotion", "pixels" and "Usage" (whether to be used for "Training", "PublicTest" and "PrivateTest")
 * **fer2013.bib:** citation for dataset
 
+&nbsp;
 
 **All Files:**
 ```bash

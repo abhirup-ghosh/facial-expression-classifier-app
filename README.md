@@ -38,7 +38,7 @@ The easiest way to set up the environment is to use [Anaconda](https://www.anaco
 ```
 conda create -n ml-zoomcamp python=3.9
 conda activate ml-zoomcamp
-conda install numpy pandas scikit-learn seaborn jupyter
+conda install numpy pandas scikit-learn seaborn jupyter tensorflow
 ```
 
 Alternatively, I have also provided a conda `environment.yml` file that can be directly used to create the environment:
