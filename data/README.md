@@ -37,7 +37,7 @@ The dataset comprises 48x48 pixel grayscale images depicting faces. The faces ha
 
 **All Files:**
 ```bash
-challenges-in-representation-learning-facial-expression-recognition-challenge/
+./data/challenges-in-representation-learning-facial-expression-recognition-challenge/
 ├── example_submission.csv
 ├── fer2013
 │   ├── README
