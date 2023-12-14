@@ -34,7 +34,7 @@ The FER2013 dataset, curated by Pierre-Luc Carrier and Aaron Courville, was deve
 
 ### 1. Cloning the repository: 
 
-```
+```bash
 git clone git@github.com:abhirup-ghosh/facial-expression-classifier-app.git
 ```
 
@@ -42,7 +42,7 @@ git clone git@github.com:abhirup-ghosh/facial-expression-classifier-app.git
 
 The easiest way to set up the environment is to use [Anaconda](https://www.anaconda.com/download). I used the standard Machine Learning Zoomcamp conda environment `ml-zoomcamp`, which you can create, activate, and install the relevant libraries in, using the following commands in your terminal:
 
-```
+```bash
 conda create -n ml-zoomcamp python=3.9
 conda activate ml-zoomcamp
 conda install numpy pandas scikit-learn seaborn jupyter tensorflow
@@ -50,18 +50,17 @@ conda install numpy pandas scikit-learn seaborn jupyter tensorflow
 
 Alternatively, I have also provided a conda `environment.yml` file that can be directly used to create the environment:
 
-```
+```bash
 conda env create -f opt/environment.yml
 ```
 
 ### 3. Running `notebooks/notebook.ipynb`
 
 You can run the notebook on **[Google Colab](https://colab.research.google.com/github/abhirup-ghosh/facial-expression-classifier-app/blob/main/notebooks/notebook.ipynb)**. Details of the instance are:
-
-```
 * Notebook: Python3 
 * Hardware: Single T4 GPU
 
+```
 Package     : Verion
 --------------------
 pandas      : 1.5.3
@@ -88,6 +87,14 @@ This notebook outlines the entire investigation and consists of the following st
 - Making predictions using the saved model
 - Testing Flask framework
 
+### 4. **Training model**
+We encode our best, tuned CNN model inside the scripts/train.py file which can be run using:
+
+```bash
+cd scripts
+python train.py
+```
+The output of this script can be found in: `models/emotion_classifier.h5`. It has an average accuracy of 65% and will be used for the following steps.
 
 
 ## Data Citation
