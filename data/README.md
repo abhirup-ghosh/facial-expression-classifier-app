@@ -32,6 +32,8 @@ This file contains all the data around the competition. It three features: **"em
   * 3,589 PublicTest examples [for evaluation of the public leaderboard on Kaggle]
   * 3,589 PrivateTest examples [for evaluation of the private leaderboard on Kaggle]
 
+![alt text](../media/class_counts.png)
+
 
 📊📊 *We use the PublicTest and PrivateTest sets as our Validation and Test sets respectively* 📊📊
 
