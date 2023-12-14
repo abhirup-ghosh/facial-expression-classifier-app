@@ -19,6 +19,13 @@
 
 ## [Project Overview](#project-overview)
 
+Understanding human emotions is crucial for human-computer interaction, artificial intelligence, and affective computing. This project delves into the realm of facial emotion recognition:
+* using the Kaggle Facial [Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data) dataset
+* building a [Convolutional Neural Network (CNN) Tensorflow/Keras model](./models/emotion_classifier.h5), and
+* deploying it on AWS which can be accessed through a REST-API.
+
+As emotions play a pivotal role in communication, this project aims to contribute to the evolving landscape of emotion-aware technology. Whether applied in virtual assistants, sentiment analysis, or interactive systems, accurate facial emotion recognition enhances user experience and engagement. Dive into the repository to explore the code, contribute to advancements, and potentially integrate the model into your projects for a more emotionally intelligent interface.
+
 ## [Datasets](#datasets)
 
 The FER2013 dataset, curated by Pierre-Luc Carrier and Aaron Courville, was developed for the Kaggle competition titled [Challenges in Representation Learning: Facial Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge). All the dataset files can be downloaded and decompressed from [here](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data). This dataset provides a valuable resource for exploring challenges in representation learning and advancing facial expression recognition algorithms. There are more details about the dataset [**here**](./data/README.md).
@@ -48,6 +55,39 @@ conda env create -f opt/environment.yml
 ```
 
 ### 3. Running `notebooks/notebook.ipynb`
+
+You can run the notebook on **[Google Colab](https://colab.research.google.com/github/abhirup-ghosh/facial-expression-classifier-app/blob/main/notebooks/notebook.ipynb)**. Details of the instance are:
+
+```
+* Notebook: Python3 
+* Hardware: Single T4 GPU
+
+Package     : Verion
+--------------------
+pandas      : 1.5.3
+numpy       : 1.23.5
+matplotlib  : 3.7.1
+seaborn     : 0.12.2
+sklearn     : 1.2.2
+pickle      : 4.0
+tensorflow  : 2.14.0
+```
+
+
+
+This notebook outlines the entire investigation and consists of the following steps [🚨 Skip this step, if you want to directly want to use the final configuration for training and/or final model for predictions]:
+
+- Data Loading: `data/icml_face_data.csv`  
+- Data preprocessing
+- Exploratory data analysis
+- Setting up a validation framwork
+- Model definition: CNN (+ data augmentation)
+- Model evaluation [and hyper-parameter tuning]
+- Saving the best model: `models/emotion_classifier.h5`
+- Preparation of the test data
+- Making predictions using the saved model
+- Testing Flask framework
+
 
 
 ## Data Citation
