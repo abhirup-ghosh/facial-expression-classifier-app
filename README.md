@@ -43,9 +43,12 @@ git clone git@github.com:abhirup-ghosh/facial-expression-classifier-app.git
 The easiest way to set up the environment is to use [Anaconda](https://www.anaconda.com/download). I used the standard Machine Learning Zoomcamp conda environment `ml-zoomcamp`, which you can create, activate, and install the relevant libraries in, using the following commands in your terminal:
 
 ```bash
-conda create -n ml-zoomcamp python=3.9
+conda create -n ml-zoomcamp python=3.9 -y
 conda activate ml-zoomcamp
-conda install numpy pandas scikit-learn seaborn jupyter tensorflow
+conda install numpy pandas scikit-learn seaborn jupyter tensorflow -y
+
+# install tflite-runtime
+pip install --extra-index-url https://google-coral.github.io/py-repo/ tflite_runtime
 ```
 
 Alternatively, I have also provided a conda `environment.yml` file that can be directly used to create the environment:
@@ -85,7 +88,12 @@ This notebook outlines the entire investigation and consists of the following st
 - Saving the best model: `models/emotion_classifier.h5`
 - Preparation of the test data
 - Making predictions using the saved model
-- Testing Flask framework
+- Convert to TF-Lite model: `models/emotion_classifier.tflite`
+- Remove TF dependency
+
+#### 3.1. Running `notebooks/notebook-predict-w-tflist.ipynb`
+
+This notebook provides the framework to make a prediction using `tflite_runtime` on a `url` input.
 
 ### 4. **Training model**
 We encode our best, tuned CNN model inside the scripts/train.py file which can be run using:
@@ -94,7 +102,7 @@ We encode our best, tuned CNN model inside the scripts/train.py file which can b
 cd scripts
 python train.py
 ```
-The output of this script can be found in: `models/emotion_classifier.h5`. It has an average accuracy of 65% and will be used for the following steps.
+The output of this script can be found in: `models/*`. It has an average accuracy of 65% and will be used for the following steps. The training script also converts the keras model into a light-weight TF-lite model.
 
 
 ## Data Citation
