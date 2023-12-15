@@ -205,3 +205,13 @@ print(f'Test:\t\t | {print_metrics(test_image_label, y_pred)}')
 # Save the trained model
 print('... saving model `emotion_classifier.h5` to ../models')
 model.save('../models/emotion_classifier.h5')
+
+# Convert model to TF-lite
+print('... converting model to TF-lite format')
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+
+tflite_model = converter.convert()
+
+print('... saving TF-lite model `emotion_classifier.tflite` to ../models')
+with open('../models/emotion_classifier.tflite', 'wb') as f_out:
+    f_out.write(tflite_model)
