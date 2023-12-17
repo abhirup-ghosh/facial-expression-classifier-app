@@ -91,14 +91,6 @@ This notebook outlines the entire investigation and consists of the following st
 - Convert to TF-Lite model: `models/emotion_classifier.tflite`
 - Remove TF dependency
 
-#### 3.1. Running `notebooks/notebook-lambda.ipynb`
-
-This notebook provides the framework to make a prediction:
-* using `tflite_runtime` model instead of Keras model
-* without any tensorflow/keras dependency on preprocessing/prediction
-* on a `url` input
-* from within the `lambda_function`
-
 ### 4. **Training model**
 We encode our best, tuned CNN model inside the scripts/train.py file which can be run using:
 
@@ -107,6 +99,47 @@ cd scripts
 python train.py
 ```
 The output of this script can be found in: `models/*`. It has an average accuracy of 65% and will be used for the following steps. The training script also converts the keras model into a light-weight TF-lite model.
+
+### 5. **Prepare Code for Lambda**
+
+#### 5.1. Running `notebooks/notebook-lambda.ipynb`
+
+This notebook provides a step-by-step guide for preparing the Lambda Code:
+* Use `tflite_runtime` model instead of Keras model
+* Remove any tensorflow/keras dependency on preprocessing/prediction
+* Define `predict(url)` function to make prediction on an **image url (input)**; output is a dictionary of emotion classes with respective probabilities.
+* Create  `lambda_handler(event, context)` wrapper for calling `predict(url)`
+
+#### 5.2. `scripts/lambda_function.py`
+
+Once we test out the entire lambda framework using the above notebook, we convert it into a python script.
+
+### 6. Make predictions
+
+**Test Image: Happy**
+<img src="./media/test_image_happy.jpeg" alt="drawing" width="1000"/>
+
+```bash
+facial-expression-classifier-app/scripts> python
+
+Python 3.9.18 (main, Sep 11 2023, 08:20:50) 
+[Clang 14.0.6 ] :: Anaconda, Inc. on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import lambda_function
+
+>>> event = {'url': 'https://upload.wikimedia.org/wikipedia/commons/0/09/The_joy_of_the_happy_face_by_Rasheedhrasheed.jpg'}
+
+>>> lambda_function.lambda_handler(event, None)
+
+{'Anger': 8.256378446588042e-35, 'Disgust': 2.9382650407717056e-39, 'Fear': 2.9382650407717056e-39, 'Happy': 1.0, 'Neutral': 0.0, 'Sadness': 0.0, 'Surprise': 0.0}
+```
+
+**Prediction: Happy**
+
+
+### 6. Deployment on Lambda
+
 
 
 ## Data Citation
