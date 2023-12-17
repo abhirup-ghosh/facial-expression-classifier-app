@@ -116,9 +116,16 @@ Once we test out the entire lambda framework using the above notebook, we conver
 
 ### 6. Make predictions
 
-**Test Image: Happy**
+**Test Event: Happy**
+
+```
+event = {'url': 'https://upload.wikimedia.org/wikipedia/commons/0/09/The_joy_of_the_happy_face_by_Rasheedhrasheed.jpg'}
+```
 <img src="./media/test_image_happy.jpeg" alt="drawing" width="1000"/>
 
+
+
+**Prediction: Happy**
 ```bash
 facial-expression-classifier-app/scripts> python
 
@@ -135,10 +142,28 @@ Type "help", "copyright", "credits" or "license" for more information.
 {'Anger': 8.256378446588042e-35, 'Disgust': 2.9382650407717056e-39, 'Fear': 2.9382650407717056e-39, 'Happy': 1.0, 'Neutral': 0.0, 'Sadness': 0.0, 'Surprise': 0.0}
 ```
 
-**Prediction: Happy**
+
+### 7. Containerization: Docker
+
+Run the `Dockerfile` using [make sure that the docker daemon is running?] to build the image `facial-emotion-recognition`:
+
+```bash
+docker build --platform linux/amd64 -t facial-emotion-recognition .
+```
+The option `--platform linux/amd64` is necessary to identify the appropriate wheel for for TF-Lite (Tensorflow 2.14.0).
 
 
-### 6. Deployment on Lambda
+Once the image is built, we need to expose the container port (8080) to the localhost port (8080) using:
+
+```bash
+docker run -it --rm -p 8080:8080 --platform linux/amd64 facial-emotion-recognition:latest
+```
+We can now make a request using our test script `scripts/test.py`:
+
+```
+python test.py
+# {'Anger': 8.252851389563724e-35, 'Disgust': 0.0, 'Fear': 0.0, 'Happy': 1.0, 'Neutral': 0.0, 'Sadness': 0.0, 'Surprise': 0.0}
+```
 
 
 
