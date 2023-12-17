@@ -23,14 +23,10 @@ def prepare_input(url):
         buffer = resp.read()
     stream = BytesIO(buffer)
     img = Image.open(stream)
+    img = img.convert('L')
     img = img.resize((48, 48), Image.NEAREST)
-
     x = np.array(img)
-    if x.ndim > 2:
-        x = x[:,:,0]
-    else: return x
     X = np.array([x])
-    X = X/255.
     X = np.expand_dims(np.float32(X), axis=-1)
 
     return X
