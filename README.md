@@ -91,9 +91,13 @@ This notebook outlines the entire investigation and consists of the following st
 - Convert to TF-Lite model: `models/emotion_classifier.tflite`
 - Remove TF dependency
 
-#### 3.1. Running `notebooks/notebook-predict-w-tflist.ipynb`
+#### 3.1. Running `notebooks/notebook-lambda.ipynb`
 
-This notebook provides the framework to make a prediction using `tflite_runtime` on a `url` input.
+This notebook provides the framework to make a prediction:
+* using `tflite_runtime` model instead of Keras model
+* without any tensorflow/keras dependency on preprocessing/prediction
+* on a `url` input
+* from within the `lambda_function`
 
 ### 4. **Training model**
 We encode our best, tuned CNN model inside the scripts/train.py file which can be run using:
