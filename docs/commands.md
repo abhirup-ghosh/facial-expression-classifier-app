@@ -1,2 +1,0 @@
-docker build --platform linux/amd64 -t facial-emotion-recognition .
-docker run -it --rm -p 8080:8080 --platform linux/amd64 facial-emotion-recognition:latest
