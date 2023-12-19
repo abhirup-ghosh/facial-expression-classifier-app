@@ -67,7 +67,7 @@ TAG=facial-emotion-recognition-001
 REMOTE_URI=${PREFIX}:${TAG}
 ```
 
-The registry, called **facial-emotion-recognition**m should now be created, and should be reflected [here](https://eu-north-1.console.aws.amazon.com/ecr/private-registry/repositories?region=eu-north-1). However, if you click the repository, there are no image tags within. [⚠️ Make sure region is same as one used for `aws configure`]. 
+The registry, called **facial-emotion-recognition** should now be created, and should be reflected [here](https://eu-north-1.console.aws.amazon.com/ecr/private-registry/repositories?region=eu-north-1). However, if you click the repository, there are no image tags within. [⚠️ Make sure region is same as one used for `aws configure`]. 
 
 # Publish Docker Container Image to AWS ECR
 
