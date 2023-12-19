@@ -8,7 +8,7 @@ from urllib import request
 import numpy as np
 
 
-interpreter = tflite.Interpreter(model_path='../models/emotion_classifier.tflite')
+interpreter = tflite.Interpreter(model_path='emotion_classifier.tflite')
 interpreter.allocate_tensors()
 
 input_index = interpreter.get_input_details()[0]['index']
