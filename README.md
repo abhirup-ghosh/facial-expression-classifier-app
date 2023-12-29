@@ -196,6 +196,9 @@ Please follow the instructions detailed [here](./docs/deployment-AWS-instruction
 - make prediction using POST METHOD `/predict`
 
 Invoke URL: https://xowsdry1bc.execute-api.eu-north-1.amazonaws.com/Test/predict
+```
+⚠️ I have now deactivated this instance because it has reached the monthly limit allowed by AWS' FreeTier model
+```
 
 ```bash
 (base) $~> python scripts/test-aws-rest-api.py 
